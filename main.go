@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	"github.com/karledenstal/loop/pages"
 )
 
 func main() {
@@ -14,7 +15,13 @@ func main() {
 		})
 	})
 
-	if err := router.Run(); err != nil {
+	router.Static("/static", "./static")
+
+	router.GET("/", func(c *gin.Context) {
+		pages.IndexPage().Render(c.Request.Context(), c.Writer)
+	})
+
+	if err := router.Run(":4282"); err != nil {
 		log.Fatal(err)
 	}
 }

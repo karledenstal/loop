@@ -17,7 +17,9 @@
   "scripts": {
     "dev:css": "sass assets/scss/app.scss static/css/app.css --watch",
     "dev:js": "esbuild assets/js/app.js --bundle --outfile=static/js/app.js --watch",
-    "dev": "concurrently \"npm run dev:css\" \"npm run dev:js\""
+    "dev:reload": "browser-sync start --proxy localhost:4282 --files 'static/css/*.css, static/js/*.js, tmp/main' --no-open --no-ui",
+    "dev:go": "air",
+    "dev": "concurrently --kill-others --names css,js,reload,go \"bun run dev:css\" \"bun run dev:js\" \"bun run dev:reload\" \"bun run dev:go\""
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
@@ -26,6 +28,8 @@
   },
   "dependencies": {
     "alpinejs": "^3.15.12",
+    "browser-sync": "^3.0.4",
+    "dayjs": "^1.11.20",
     "htmx.org": "^2.0.10"
   }
 }

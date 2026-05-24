@@ -5,6 +5,4 @@ setup:
     go install github.com/air-verse/air@latest
 
 dev:
-    templ generate --watch &
-    bun dev &
-    air
+    bun dev

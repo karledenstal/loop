@@ -5,13 +5,17 @@ body,
 html {
   margin: 0;
   font-size: $base-size;
-  font-family: var(--font-mont);
+  font-family: var(--font-inter);
+  background-color: var(--color-obsidian);
+  color: var(--color-ivory);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }
 
 ul,
